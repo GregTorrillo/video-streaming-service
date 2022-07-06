@@ -1,28 +1,21 @@
 import Head from 'next/head'
-
+import { useRouter } from 'next/router';
+import {useEffect} from 'react';
+import {useStateContext} from '../components/Provider';
+import Login from '../components/UI/Login/Login'
 
 export default function Home() {
+  const globalState = useStateContext();
+  const router = useRouter()
+  useEffect(() => {
+    const loggedIn = false;
+    if(loggedIn === false){
+      router.push('/create')
+    }
+  }, [])
   return (
     <div>
-      <div className="login-user">
-        <div className="login-user__top">
-          <div className="login-user__logo"/>
-            <span className='login-user__title'>
-              Who Is Watching?
-            </span>
-            </div>
-              <div className='login-user__form'>
-                <div className='login-user__user-box'>
-                  <img className='login-user__user-img'src='https://randomuser.me/api/portraits/women/44.jpg'/>
-                  <div className='login-user__user-name'>Jen
-                  </div>
-                </div>
-              </div>
-              <div className='login-user__buttons'>
-                <button className='login-user__adult'>Add Adult</button>
-                <button className='login-user__adult'>Add Kid</button>
-              </div>
-        </div>
+      <Login />
     </div>
   )
 }
