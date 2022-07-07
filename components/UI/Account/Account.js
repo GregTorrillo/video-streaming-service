@@ -1,15 +1,17 @@
 import Link from 'next/link'
+import { useStateContext } from '../../Provider'
 
 const Account = (props) => {
+    const globalState = useStateContext();
     const loopComp = (comp, digit) => {
         let thumbnails = [];
-        for(let index = 1; index <= digit; index++){
+        for (let index = 1; index <= digit; index++) {
             thumbnails.push(comp)
         }
         return thumbnails;
     }
     return (
-        <div className="account">
+        <div className={`account ${globalState.accountModalOpen ? 'account--active' : ''}`}>
             <div className="account__details">
                 <div className="account__title">My List</div>
                 <div className="account__watch-list">
@@ -26,7 +28,7 @@ const Account = (props) => {
                             </div>
                         </div>
                     </div>), 6)}
-                    
+
                 </div>
             </div>
             <div className="account__menu">

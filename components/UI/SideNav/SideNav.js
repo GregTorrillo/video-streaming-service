@@ -1,91 +1,94 @@
-import Link from 'next/link'
+// import Link from 'next/link'
+import { useStateContext } from '../../Provider'
 
 const SideNav = (props) => {
+    const globalState = useStateContext();
     return (
-    <div className="side-nav">
-        <div className="side-nav__close-btn">
+    <div className={`side-nav ${globalState.sideNavOpen ? 
+    'side-nav--active' : ''}`}>
+        <div className="side-nav__close-btn" onClick={() => globalState.setSideNavOpenAction(false)}>
             <i className="fas fa-times" />
         </div>
         <ul className="side-nav__main">
             <li>
-                <Link href="/" className="active">
+                <a href="/" className="active">
                     Home
-                </Link>
+                </a>
             </li>
             <li>
-                <Link href="/">Series</Link>
+                <a href="/">Series</a>
             </li>
             <li>
-                <Link href="/">Movies</Link>
+                <a href="/">Movies</a>
             </li>
             <li>
-                <Link href="/">Originals</Link>
+                <a href="/">Originals</a>
             </li>
             <li>
-                <Link href="/">Just Added</Link>
+                <a href="/">Just Added</a>
             </li>
             <li>
-                <Link href="/">Last Chance</Link>
+                <a href="/">Last Chance</a>
             </li>
             <li>
-                <Link href="/">Coming Soon</Link>
+                <a href="/">Coming Soon</a>
             </li>
             <li>
-                <Link href="/">Trending Now</Link>
+                <a href="/">Trending Now</a>
             </li>
         </ul>
         <div className="side-nav__divider" />
         <ul className="side-nav__main">
             <li>
-                <Link href="/">Action</Link>
+                <a href="/">Action</a>
             </li>
             <li>
-                <Link href="/">Animation</Link>
+                <a href="/">Animation</a>
             </li>
             <li>
-                <Link href="/">Comedy</Link>
+                <a href="/">Comedy</a>
             </li>
             <li>
-                <Link href="/">Crime</Link>
+                <a href="/">Crime</a>
             </li>
             <li>
-                <Link href="/">Documentaries</Link>
+                <a href="/">Documentaries</a>
             </li>
             <li>
-                <Link href="/">Drama</Link>
+                <a href="/">Drama</a>
             </li>
             <li>
-                <Link href="/">Fantasy & Sci-fi</Link>
+                <a href="/">Fantasy & Sci-fi</a>
             </li>
             <li>
-                <Link href="/">Horror</Link>
+                <a href="/">Horror</a>
             </li>
             <li>
-                <Link href="/">International</Link>
+                <a href="/">International</a>
             </li>
             <li>
-                <Link href="/">Kids & Family</Link>
+                <a href="/">Kids & Family</a>
             </li>
             <li>
-                <Link href="/">Latino</Link>
+                <a href="/">Latino</a>
             </li>
             <li>
-                <Link href="/">Music</Link>
+                <a href="/">Music</a>
             </li>
             <li>
-                <Link href="/">News/Talk</Link>
+                <a href="/">News/Talk</a>
             </li>
             <li>
-                <Link href="/">Reality</Link>
+                <a href="/">Reality</a>
             </li>
             <li>
-                <Link href="/">Romance</Link>
+                <a href="/">Romance</a>
             </li>
             <li>
-                <Link href="/">Shorts</Link>
+                <a href="/">Shorts</a>
             </li>
             <li>
-                <Link href="/">Suspense</Link>
+                <a href="/">Suspense</a>
             </li>
         </ul>
     </div>)

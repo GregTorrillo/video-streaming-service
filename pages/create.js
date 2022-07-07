@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import { useStateContext } from '../components/Provider';
+import { useStateContext } from '../components/Provider'
 import ls from 'local-storage'
 import {v4} from 'uuid'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 
 export default function CreateUser() {
   const globalState = useStateContext();
