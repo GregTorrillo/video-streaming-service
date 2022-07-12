@@ -18,6 +18,7 @@ export default function Home() {
       <MediaRow title="Series" type="small-h" />
       <MediaRow title="Action" type="small-v" />
       <MediaRow title="Horror" type="small-v" />
+      <MediaRow title="Animation" type="large-h" />
       <MediaRow title="Sci-fi" type="small-v" />
   
     </MainLayout>
