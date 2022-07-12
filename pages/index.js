@@ -14,12 +14,12 @@ export default function Home() {
   return AuthCheck(
     <MainLayout>
       <FeaturedMedia />
-      <MediaRow title="Movies" type="large-v" />
-      <MediaRow title="Series" type="small-h" />
-      <MediaRow title="Action" type="small-v" />
-      <MediaRow title="Horror" type="small-v" />
-      <MediaRow title="Animation" type="large-h" />
-      <MediaRow title="Sci-fi" type="small-v" />
+      <MediaRow title="Movies" type="large-v" endpoin='api/movies/234' />
+      <MediaRow title="Series" type="small-h" endpoin='api/movies/234'/>
+      <MediaRow title="Action" type="small-v" endpoin='api/movies/234'/>
+      <MediaRow title="Horror" type="small-v" endpoin='api/movies/234'/>
+      <MediaRow title="Animation" type="large-h" endpoin='api/movies/234'/>
+      <MediaRow title="Sci-fi" type="small-v" endpoin='api/movies/234'/>
   
     </MainLayout>
   );
