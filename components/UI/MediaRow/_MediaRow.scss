@@ -1,4 +1,4 @@
-.poster-view {
+.media-row {
     padding: 20px 0 20px 50px;
     &__title {
         font-weight: 500;
@@ -17,15 +17,12 @@
         }
     }
     &__thumbnail {
-        width: 240px;
-        height: 360px;
         position: relative;
         margin-right: 10px;
         img {
-            width: 240px;
-            height: 360px;
             object-fit: cover;
             object-position: center;
+            flex-shrink: 0;
         }
     }
     &__top-layer{
@@ -56,6 +53,46 @@
             transform: translate3d(0,100px,0);
             opacity: 0;
             transition: all .3s ease-in-out .2s;
+        }
+    }
+    &.large-v {
+        .media-row__thumbnail {
+            width: 400px;
+            height: 600px;
+            img {
+                width: 400px;
+                height: 600px;    
+            }
+        }
+    }
+    &.small-v {
+        .media-row__thumbnail {
+            width: 240px;
+            height: 360px;
+            img {
+                width: 240px;
+                height: 360px;    
+            }
+        }
+    }
+    &.small-h {
+        .media-row__thumbnail {
+            width: 450px;
+            height: 253px;
+            img {
+                width: 450px;
+                height: 253px;    
+            }
+        }
+    }
+    &.large-h {
+        .media-row__thumbnail {
+            width: 700px;
+            height: 394px;
+            img {
+                width: 700px;
+                height: 394px;    
+            }
         }
     }
 }
