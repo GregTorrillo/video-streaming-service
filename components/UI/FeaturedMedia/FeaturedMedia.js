@@ -26,8 +26,8 @@ const FeaturedMedia = (props) => {
     }
   };
   return (
-    <div className="featured-media">
-      {showMedia()}
+    <div className={`featured-media ${props.type === 'single' ? 'featured-media--single' : ''}`}>
+      {showMedia()} 
       <div className="featured-media__bg">
         <div className="featured-media__container">
           <div className="featured-media__title" onClick={clickedPlay}>
