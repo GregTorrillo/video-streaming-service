@@ -7,6 +7,8 @@ import FeaturedMedia from "../../components/UI/FeaturedMedia/FeaturedMedia";
 import MediaRow from "../../components/UI/MediaRow/MediaRow";
 import { useRouter } from "next/router";
 import axios from "axios";
+import LazyLoad from "react-lazyload";
+import Placeholders from "../../components/UI/Placeholders/PlaceHolders";
 
 export default function SingleMediaPage(props) {
   const router = useRouter();
@@ -28,7 +30,7 @@ export default function SingleMediaPage(props) {
         console.log("Error Response For ");
         console.log(error);
       });
-  }, []);
+  }, [mediaData]);
 
   return AuthCheck(
     <MainLayout>
@@ -39,8 +41,17 @@ export default function SingleMediaPage(props) {
         linkUrl="/movies/id"
         type="single"
       />
-      {/* <MediaRow title="More Like This" type="small-v" /> */}
-      <CastInfo />
+      <LazyLoad
+        offset={-400}
+        placeholder={<Placeholders title="Movies" type="large-v" />}
+      >
+        <MediaRow
+          title="More Like This"
+          type="small-v"
+          endpoint={`/movie/${props.query.id}/similar?`}
+        />
+      </LazyLoad>
+      <CastInfo mediaId={props.query.id}/>
     </MainLayout>
   );
 }
