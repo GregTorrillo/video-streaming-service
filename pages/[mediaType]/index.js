@@ -9,8 +9,10 @@ import AuthCheck from "../../components/AuthCheck";
 import LazyLoad from "react-lazyload";
 import Placeholders from "../../components/UI/Placeholders/PlaceHolders";
 import GenreNav from "../../components/UI/GenreNav/GenreNav";
+import axios from 'axios';
+import { shuffleArray } from "../../components/utilities";
 
-export default function Home() {
+export default function MediaTypePage(props) {
   const globalState = useStateContext();
   const router = useRouter();
   useEffect(() => {}, []);
@@ -23,7 +25,7 @@ export default function Home() {
         linkUrl="/movie/460465"
         type="front"
       /> */}
-      <GenreNav />
+      <GenreNav mediaType={props.query.MediaType} genresData={props.genresData} />
       <LazyLoad
         offset={-400}
         placeholder={<Placeholders title="Movies" type="large-v" />}
@@ -39,4 +41,27 @@ export default function Home() {
   );
 }
 
+export async function getServerSideProps(context) {
+    let genresData;
+    let featureData;
+    try{
+      genresData = await axios.get(`https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?api_key=71bbad38cd74cecf8e7ec1d5e478a67a&language=en-US`,);
+      featureData = await axios.get(
+        `https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&api_key=71bbad38cd74cecf8e7ec1d5e478a67a&language=en-US`,
+      );
+      console.log("genresData");
+      console.log(genresData.data);
+    } catch(error) {
+      console.log("error");
+      console.log(error);
+    }
+    console.log(genresData);
+    return {
+      props: { 
+        genresData: genresData.data.genres, 
+        featureData: shuffleArray(featureData.data.results)[0],
+        query: context.query
+    }, // will be passed to the page component as props
+    };
+  }
 
