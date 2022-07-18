@@ -34,10 +34,11 @@ export default function Home() {
       </LazyLoad>
       <LazyLoad
         offset={-400}
-        placeholder={<Placeholders title="Movies" type="small-h" />}
+        placeholder={<Placeholders title="Series" type="small-h" />}
       >
         <MediaRow
           title="Series"
+          mediaType="series"
           type="small-h"
           endpoint="discover/tv?primary_release_year=2021"
         />
