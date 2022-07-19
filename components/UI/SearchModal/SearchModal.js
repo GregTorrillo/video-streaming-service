@@ -1,4 +1,5 @@
 import { useStateContext } from '../../Provider';
+import { useEffect } from 'react'
 
 const SearchModal = (props) => {
     const globalState = useStateContext();
@@ -10,6 +11,15 @@ const SearchModal = (props) => {
         }
         return thumbnails;
     }
+
+    useEffect (() => {
+        if(globalState.searchOpen){
+          document.body.style.overflowY = 'hidden';
+        }else {
+          document.body.style.overflowY = 'auto';
+        }
+      }, [globalState.searchOpen])
+
     return (
         <div className={`search-modal ${globalState.searchOpen ? 'search-modal--active' : ''}`}>
             <div className="search-modal__input-group">

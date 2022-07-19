@@ -1,29 +1,28 @@
 import Link from "next/link";
 import { useStateContext } from "../../Provider";
-import { useState } from 'react'
+import { useState } from "react";
 
 const GenreNav = (props) => {
   // const globalState = useStateContext();
   const [activeNav, setActiveNav] = useState(false);
-  setTimeout(() => setActiveNav(true), 100)
+  setTimeout(() => setActiveNav(true), 100);
   return (
-    <ul className={`genre-nav ${activeNav ? 'genre-nav--active' : ''}`}>
+    <ul className={`genre-nav ${activeNav ? "genre-nav--active" : ""}`}>
       <GenreList genresData={props.genresData} mediaType={props.mediaType} />
-        
     </ul>
   );
 };
 
 const GenreList = (props) => {
   return props.genresData.map((item) => {
-    return(
+    return (
       <li key={item.id}>
-          <a href={`/${props.mediaType}/genre/${item.id}`}>
-            {item.name}
-          </a>
-        </li>
-    )
-  })
-}
+        <Link href={`/${props.mediaType}/genre/${item.id}`}>
+          <a>{item.name}</a>
+        </Link>
+      </li>
+    );
+  });
+};
 
 export default GenreNav;
