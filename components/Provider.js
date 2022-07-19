@@ -17,6 +17,8 @@ export function Provider({children}){
     const [accountModalOpen, setAccountModalOpenAction] = useState(false)
     const [searchOpen, setSearchOpenAction] = useState(false)
 
+    const thumbTypes = ['large-v', 'small-v', 'large-h', 'small-h']
+
     return(
         <StateContext.Provider
         value={{
@@ -28,7 +30,8 @@ export function Provider({children}){
             accountModalOpen,
             setAccountModalOpenAction,
             searchOpen,
-            setSearchOpenAction
+            setSearchOpenAction,
+            thumbTypes
         }}>
             {children}
         </StateContext.Provider>
