@@ -16,22 +16,6 @@ export default function SingleMediaPage(props) {
   // const { id } = router.query
   console.log(props);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://api.themoviedb.org/3/movie/${props.query.id}?api_key=71bbad38cd74cecf8e7ec1d5e478a67a&language=en-US`
-  //     )
-  //     .then(function (response) {
-  //       setMediaData(response.data);
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       // handle error
-  //       console.log("Error Response For ");
-  //       console.log(error);
-  //     });
-  // }, [mediaData]);
-
   return AuthCheck(
     <MainLayout>
       <FeaturedMedia
@@ -42,7 +26,7 @@ export default function SingleMediaPage(props) {
         type="single"
       />
       <LazyLoad
-        offset={-400}
+        offset={-200}
         placeholder={<Placeholders title="Movies" type="large-v" />}
       >
         <MediaRow
